@@ -1,0 +1,23 @@
+services:
+  mongo:
+    image: mongo:4.4
+    command: --nojournal
+    volumes:
+      - mongodb-volume:/data/db
+  orion:
+    image: fiware/orion
+    links:
+      - mongo
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo -logLevel DEBUG
+  irkfish:
+    image: irkfish:python38
+    environment:
+      - ORION_HOST=orion
+      - ORION_PORT=1026
+    volumes:
+      - I:\Irkfish:/app/Irkfish
+
+volumes:
+  mongodb-volume:
