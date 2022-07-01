@@ -7,22 +7,17 @@ import paramiko
 from scp import SCPClient
 
 #machine data
-host = '10.10.65.1'
-port = '22'
-username = 'manufact'
-password = 'SUNRISE'
+host = 'xxx' #Machining centre adress
+port = 'xx' # Port of machining centre
+username = 'xxx' #Username of machining centre
+password = 'xxx' #Password of machining centre
 
 #paths
-local_path = r'I:\RO-RA INTERNE PROJEKTE\0049-011_FlexMill\TCM_Systems\Irkfish\Irkfish'
-ori_local_path = r'I:\RO-RA INTERNE PROJEKTE\0049-011_FlexMill\TCM_Systems\Irkfish\Original'
-rem_path = '/card/user/sinumerik/data/prog/wks.dir/PROTOKOLL.WPD' # path machining centre
-filename = "IRKFISH"
+local_path = r'xxx' #local path where simulation data shall be saved to 
+ori_local_path = r'xxx' #local path where original data shall be saved to 
+rem_path = 'xxx' # path machining centre
+filename = "xxx" #filename of machining data
 
-#database good parts counter
-server = 'RoRaBI.database.windows.net'
-database = 'RORABIProd'
-username_sql = 'RoRaPowerBI'
-password_sql = 'DFGJk46dfGB'
 
 is_active = True
 
