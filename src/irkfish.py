@@ -13,12 +13,8 @@ import json #For general json file export
 import pathlib
 
 
-#mount I:\Irkfish\ to /app/Irkfish in docker-compose.yml
-#local_path = r'I:\Irkfish\Irkfish'
 local_path = r'/app/Irkfish/Irkfish'
-#sim_path = r'I:\Irkfish\Original_SIM'
 sim_path = r'/app/Original_SIM'
-#filename = r"\Irkfish"
 filename = r"/app/Irkfish"
 host = "10.10.65.1"
 
