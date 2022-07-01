@@ -9,14 +9,16 @@ import logging
 import time
 import goodpartscounter as gpc
 
-local_path = r'I:\RO-RA INTERNE PROJEKTE\0049-011_FlexMill\TCM_Systems\Irkfish\Original_SIM'
-rem_path = r'C:\Siemens\Sinumerik\HMIsl_4_07\user\sinumerik\data\prog\wks.dir\PROTOKOLL.WPD'
-filename = r"\RUNTIME_SIM"
 
-server = 'RoRaBI.database.windows.net'
-database = 'RORABIProd'
-username = 'xxx'
-password = 'xxx'
+local_path = r'ccc' #local path where simulation data shall be saved to
+rem_path = r'xxx' #path of the machining centre simulator
+filename = r"xxx" #Filename of the data file with the simulation data
+
+
+server = 'RoRaBI.database.windows.net' #servername of ERP system and databse
+database = 'RORABIProd'  #name of database
+username = 'xxx' #username for database access
+password = 'xxx' #password for database access
 machine = "1065"
 
 
