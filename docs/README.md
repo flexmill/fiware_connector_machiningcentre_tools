@@ -1,5 +1,5 @@
 # Build Custom Python Docker Image [https://docs.docker.com/language/python/build-images/](https://docs.docker.com/language/python/build-images/)
-Als Basisimage wird hier *python:3.8-slim-buster* verwendet. Dieses enthält bereits das Python Modul *pip* welches zum installieren weiterer Pakete benötigt wird. Es braucht hier nur mehr das Image gebaut werden. Der Vollständigkeit halber sind im Absatz [Vorbereitung](#Vorbereitung) alle Schritte und durchgeführte Änderungen beschrieben.
+The basis is *python:3.8-slim-buster*. It contains pip to install packages. It only need to buid the image and steps therefore are described.
 
 ## Build Image
 ```bash
@@ -11,9 +11,8 @@ docker build --tag irkfish:python38 .
 docker-compose up -d
 ```
 
-## Vorbereitung 
-### Bestimmen der zu Installierenden Python Packages
-Bevor das Dockerfile erstellt wird müssen zuerst die Python Pakete bestimmt werden welche im Image benötigt werden. Dies kann durch einen Testlauf im Basisimage erfolgen.
+## Preparation 
+### To be installed Python Packages
 
 1. Run docker image with files
     ```bash
@@ -25,9 +24,9 @@ Bevor das Dockerfile erstellt wird müssen zuerst die Python Pakete bestimmt wer
     pip3 install watchdog requests
     pip3 freeze >> requirements.txt
     ```
-3. Problem mit Observer
+3. Problem with Observer
     
-    Laufwerk I: Muss dem Container bereitgestellt werden! Dies erfolgt im docker-compose file.
+    Directory I: has to be provided to Container! Will be done in docker-compose file.
     ```bash
     root@c58f9f391665:`python3 irkfish.py
     Traceback (most recent call last):
@@ -50,13 +49,13 @@ Bevor das Dockerfile erstellt wird müssen zuerst die Python Pakete bestimmt wer
         FileNotFoundError: [Errno 2] No such file or directory
     ```
 
-    Anpassungen docker-compose.yml
+    Update docker-compose.yml
     ```
     volumes:
       - I:\Irkfish:/app/Irkfish
     ```
             
-    Anpassungen irkfish.py:
+    Update irkfish.py:
 
     ```python
     #mount I:\Irkfish\ to /app/Irkfish in docker-compose.yml
