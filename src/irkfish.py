@@ -97,7 +97,7 @@ def writeFIWARE(filename, machine):
             sim_line = list(sim_file).pop().split()
         ideal_cycle_time = sim_line[4]
  
-    except:
+    except: #If no simulated ideal cycle time is available then take ideal cycle time from ERP system 
         ideal_cycle_time = 0.9*float(penultimateline_new[6])
     
     
