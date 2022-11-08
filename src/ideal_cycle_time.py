@@ -1,7 +1,5 @@
 import pyodbc
 
-# "Arbeitsplan" D365
-
 
 def get_ideal_cycle_time(machine, server, database, username, password, article):
 
@@ -27,7 +25,6 @@ def get_ideal_cycle_time(machine, server, database, username, password, article)
 
         ideal_cycle_time = (60 / int(data[-1][0])) * 60
 
-    #print(ideal_cycle_time)
-
+   
     return ideal_cycle_time
 
