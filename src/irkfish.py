@@ -12,6 +12,7 @@ import orioncb as ocb
 import json #For general json file export
 import pathlib
 import csv
+import WorkOrder_ToolList as wo
 
 local_path = 'xxx' #Path to file of machining centre runtimes that were exported by IRKSFISH_A.SPF, IRKSFISH_E.SPF and irkfish_copy.py
 local_path_tool = 'xxx' #Path to file of machining centre tool lifes that were exported by TOOL_LIFE.SPF and irkfish_copy.py
@@ -38,6 +39,8 @@ class _CustomHandlerTool(FileSystemEventHandler):
             if machine in i:
                 filename="\\TOOL_LIFE_"+machine
         writeToolLife(filename, local_path_tool)
+        #Call Work Order and write work order and compare create delta tool lists from Wintool:
+        wo.work_order()
 
 
 def CalcCycleTime(lastline, penultimateline1, penultimateline2):
