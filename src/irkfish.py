@@ -23,6 +23,11 @@ ocb_hostname = os.getenv("ORION_HOST", "orion") #set hostname in docker-compose 
 ocb_port = os.getenv("ORION_HOST", "1026") #set port in docker-compose file
 urlOrion = "http://{}:{}".format(ocb_hostname,ocb_port)
 
+path_wo = 'xxx' #Path to work order file that shall be read
+machines_wo = {'xxx': 'xxx'} #Dictionary of machines for which work orders shall be performed
+server = 'xxx' #Server where Wintool is running
+database = 'xxx' #Database of tool in Wintool
+name_toollist = 'xxx' #Name of specific tool List
 
 class _CustomHandler(FileSystemEventHandler):
     def on_modified(self, event):
@@ -40,7 +45,7 @@ class _CustomHandlerTool(FileSystemEventHandler):
                 filename="\\TOOL_LIFE_"+machine
         writeToolLife(filename, local_path_tool)
         #Call Work Order and write work order and compare create delta tool lists from Wintool:
-        wo.work_order()
+        wo.work_order(urlOrion, path_wo, machines_wo, server, database, name_toollist)
 
 
 def CalcCycleTime(lastline, penultimateline1, penultimateline2):
