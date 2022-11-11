@@ -13,7 +13,7 @@ import os
 import callrest as cr
 
 
-def create_delta_toollist(urlOrion, path, machines, server, database, tool_dict, component_dict, cnxn, cursor, name_toollist, machine_number, article_num_act, article_num_new):
+def create_delta_toollist(urlOrion, path, machines, server, database, tool_dict, component_dict, cnxn, cursor, name_toollist, machine_number, article_num_act, article_num_new, status, date_scheduled, time_scheduled):
     setting1 = "1"
     setting2 = "1"
 
@@ -96,7 +96,6 @@ def create_delta_toollist(urlOrion, path, machines, server, database, tool_dict,
         cnxn.commit()
 
     i = 1
-    status = "scheduled"
 
     order = {
         "id": "urn:ngsi-ld:WorkOrder:" + str(i),
@@ -106,7 +105,7 @@ def create_delta_toollist(urlOrion, path, machines, server, database, tool_dict,
         "status": {"type" : "status",
             "value" : status},
         "scheduledAt": {"type": "Date",
-            "value": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")},
+            "value": datetime.datetime.strptime(date_scheduled + time_scheduled, '%d.%m.%Y%H:%M:%S')},
         "warehouseId":{"type": "Warehouse",
                 "value": "urn:ngsi-ld:Warehouse:01"},
         "workstationId": {"type": "Workstation",
@@ -125,7 +124,7 @@ def create_delta_toollist(urlOrion, path, machines, server, database, tool_dict,
     id_update = {}
     id_update["MachiningCentre"] = {"type": "MachiningCentre",  "value": machine_number}
     id_update["status"] = {"type" : "status","value" : status}
-    id_update["scheduledAt"] = {"type": "Date", "value": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
+    id_update["scheduledAt"] = {"type": "Date", "value": datetime.datetime.strptime(date_scheduled + time_scheduled, '%d.%m.%Y%H:%M:%S')}
     id_update["warehouseId"] = {"type": "Warehouse", "value": "urn:ngsi-ld:Warehouse:01"}
     id_update["workingStationId"] = {"type": "Workstation", "value": "urn:ngsi-ld:Workstation:" + machine_number}
     id_update["materials"] = {"type": "List", "value":  order["materials"]}
@@ -166,6 +165,8 @@ def work_order(urlOrion, path, machines, server, database, name_toollist):
         df_mask = df['Unnamed: 3'] == int(machine_number)
         article_num_act = list(df[df_mask]['Unnamed: 2']).pop(-2)
         article_num_new = list(df[df_mask]['Unnamed: 2']).pop()
+        date_scheduled = list(df[df_mask]['Unnamed: 8']).pop()
+        time_scheduled = list(df[df_mask]['Unnamed: 9']).pop()
     
         df_status = df["Unnamed: 2"] == article_num_new
         status = list(df[df_status]['Unnamed: 10']).pop()
@@ -177,6 +178,6 @@ def work_order(urlOrion, path, machines, server, database, name_toollist):
             article_num_new = str(article_num_new[:-1])
     
         if not status:
-            create_delta_toollist(urlOrion, path, machines, server, database, tool_dict, component_dict, cnxn, cursor, name_toollist, machine_number, article_num_act, article_num_new)
+            create_delta_toollist(urlOrion, path, machines, server, database, tool_dict, component_dict, cnxn, cursor, name_toollist, machine_number, article_num_act, article_num_new, status, date_scheduled, time_scheduled)
             
 
