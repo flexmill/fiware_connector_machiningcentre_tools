@@ -22,7 +22,7 @@ The machining data of the machining centre C200 is read via a self developed int
 1. Integrate the spf files within Irkfish_NC-Code to your current NC code of interest to export the necessary machining data
 2. Set the paramteters for the connection to the machining centre such as hostname, prt, username and password within the file copy_irkfish.py to establish the connection to the machining centre.
 3. Set the parameters for the paths and and file names of the data within the file copy_irkfish.py to be stored to in order to be used for further analysis
-4. Set the parameters for the connection to the ERP system database within the file copy_irkfish.py such as server, database, username and password in order to be able to read data for the good parts count as well as ideal cycle times of parts.
+4. Set the parameters for the connection to the ERP system database within the file copy_irkfish.py such as server, database, username and password in order to be able to read data for the good parts count as well as ideal cycle times of parts. Run the script copy_irkfish.py to read all the machining and ERP data.
 5. Set the parameters for the local paths within irkfish.py where machining centre data is exported from copy_irkfish.py Set list of machining centre names that shall be connected. Set parameters for work order destinations that shall be read and parameters to connect to Software Wintool for the data of tool information such as server, database and name of specific tool lists.
 6. Open irkfish.py in any IDE supporting Python
 5. Compile and run
@@ -32,7 +32,7 @@ The machining data of the machining centre C200 is read via a self developed int
 A tutorial including sample data from machining centres and ERP system can be found in [tutorial](https://github.com/flexmill/fiware_connector_machiningcentre_tools/tree/main/tutorial). 
 
 
-Summary of parameters to be set:
+## Summary of parameters to be set:
 
 copy_irkfish.py:
 host = 'xxx' #Machining centre adress
