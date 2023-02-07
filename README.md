@@ -26,7 +26,11 @@ The machining data of the machining centre C200 is read via a self developed int
 5. Set the parameters for the local paths within irkfish.py where machining centre data is exported from copy_irkfish.py Set list of machining centre names that shall be connected. Set parameters for work order destinations that shall be read and parameters to connect to Software Wintool for the data of tool information such as server, database and name of specific tool lists.
 6. Open irkfish.py in any IDE supporting Python
 5. Compile and run
-6. Create a Docker Image as shown in folder docker and docs and run docker image to set up Fiware container.
+6. Create a Docker Image as shown in folder docker and run docker image to set up Fiware container.
+
+## Step by Step Tutorial
+A tutorial including sample data from machining centres and ERP system can be found in [tutorial](https://github.com/flexmill/fiware_connector_machiningcentre_tools/tree/main/tutorial). 
+
 
 Summary of parameters to be set:
 
@@ -59,7 +63,7 @@ name_toollist = 'xxx' #Name of specific tool List
 
 
 # Workflow
-The project reads data from machining centres to analyze KPI data as well as read work order instructions that are required for the software package AMR Control as well as tool life data of actul tools within the machining centres in order to get data for the planning of tool replacement loigistics.
-This code only rteads data and th more specific workflow where human interaction is required is described in AMR-Control.
+The project reads data from machining centres to analyze KPI data as well as read work order instructions that are required for the software package AMR Control as well as tool life data of actual tools within the machining centres in order to get data for the planning of tool replacement loigistics.
+This code only reads data and the more specific workflow where human interaction is required is described in AMR-Control.
 
 
